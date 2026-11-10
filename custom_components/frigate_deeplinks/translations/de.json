@@ -1,0 +1,84 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Frigate Deep Links",
+        "description": "Verbinde Home Assistant mit Frigate, damit Ereignis-IDs und Dashboard-Deeplinks verfügbar werden. Kameras und erkannte Objekte werden aus der Frigate-Konfiguration gelesen.",
+        "data": {
+          "url": "Frigate-URL",
+          "username": "Benutzername (optional)",
+          "password": "Passwort (optional)",
+          "poll_interval": "Abfrageintervall (Sekunden)",
+          "dashboard": "Dashboard-Pfad",
+          "view": "Ansicht-Pfad",
+          "labels": "Objekte (kommagetrennt, leer = alle überwachten)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Frigate-API nicht erreichbar. URL prüfen und sicherstellen, dass Frigate läuft.",
+      "invalid_auth": "Frigate hat Benutzername oder Passwort abgelehnt.",
+      "no_cameras": "Frigate meldet keine Kameras mit aktivierter Objekterkennung."
+    },
+    "abort": {
+      "already_configured": "Diese Frigate-Instanz ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Frigate Deep Links Optionen",
+        "data": {
+          "poll_interval": "Abfrageintervall (Sekunden)",
+          "dashboard": "Dashboard-Pfad",
+          "view": "Ansicht-Pfad",
+          "labels": "Objekte (kommagetrennt, leer = alle überwachten)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "event": {
+      "last_event": {
+        "name": "Letztes {label}-Ereignis"
+      }
+    },
+    "sensor": {
+      "recent_events": {
+        "name": "Letzte Ereignisse"
+      }
+    }
+  },
+  "services": {
+    "url": {
+      "name": "Deeplink erzeugen",
+      "description": "Liefert einen Dashboard-Pfad, der ein bestimmtes Frigate-Ereignis oder Review öffnet.",
+      "fields": {
+        "event_id": {
+          "name": "Ereignis-ID",
+          "description": "Frigate-Ereignis-ID, z. B. aus einem Attribut der Ereignis-Entität."
+        },
+        "review_id": {
+          "name": "Review-ID",
+          "description": "Frigate-Review-ID. Wird verwendet, wenn keine Ereignis-ID angegeben ist."
+        },
+        "media": {
+          "name": "Medium",
+          "description": "Welches Medium geöffnet werden soll."
+        },
+        "dashboard": {
+          "name": "Dashboard-Pfad",
+          "description": "Überschreibt das konfigurierte Dashboard."
+        },
+        "view": {
+          "name": "Ansicht-Pfad",
+          "description": "Überschreibt die konfigurierte Ansicht."
+        },
+        "camera": {
+          "name": "Kamera",
+          "description": "Kameraschlüssel, damit die Karte die richtige Instanz wählt."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Frigate Deep Links",
+        "description": "Connect to Frigate so its event IDs and dashboard deep links become available in Home Assistant. Cameras and tracked object labels are read from your Frigate configuration.",
+        "data": {
+          "url": "Frigate URL",
+          "username": "Username (optional)",
+          "password": "Password (optional)",
+          "poll_interval": "Poll interval (seconds)",
+          "dashboard": "Dashboard path",
+          "view": "View path",
+          "labels": "Labels (comma separated, empty = all tracked)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the Frigate API. Check the URL and that Frigate is running.",
+      "invalid_auth": "Frigate rejected the username or password.",
+      "no_cameras": "Frigate reported no cameras with tracked objects enabled."
+    },
+    "abort": {
+      "already_configured": "This Frigate instance is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Frigate Deep Links options",
+        "data": {
+          "poll_interval": "Poll interval (seconds)",
+          "dashboard": "Dashboard path",
+          "view": "View path",
+          "labels": "Labels (comma separated, empty = all tracked)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "event": {
+      "last_event": {
+        "name": "Last {label} event"
+      }
+    },
+    "sensor": {
+      "recent_events": {
+        "name": "Recent events"
+      }
+    }
+  },
+  "services": {
+    "url": {
+      "name": "Build deep link",
+      "description": "Returns a dashboard path that opens a specific Frigate event or review.",
+      "fields": {
+        "event_id": {
+          "name": "Event ID",
+          "description": "Frigate event ID, for example from an event entity attribute."
+        },
+        "review_id": {
+          "name": "Review ID",
+          "description": "Frigate review ID. Used when no event ID is given."
+        },
+        "media": {
+          "name": "Media",
+          "description": "Which media the target should open."
+        },
+        "dashboard": {
+          "name": "Dashboard path",
+          "description": "Overrides the configured dashboard."
+        },
+        "view": {
+          "name": "View path",
+          "description": "Overrides the configured view."
+        },
+        "camera": {
+          "name": "Camera",
+          "description": "Camera hint so the card can pick the right instance."
+        }
+      }
+    }
+  }
+}

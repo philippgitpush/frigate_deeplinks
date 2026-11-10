@@ -1,0 +1,13 @@
+{
+  "domain": "frigate_deeplinks",
+  "name": "Frigate Deep Links",
+  "codeowners": ["@prozmann"],
+  "config_flow": true,
+  "documentation": "https://github.com/prozmann/frigate-deeplinks",
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/prozmann/frigate-deeplinks/issues",
+  "loggers": ["frigate_deeplinks"],
+  "requirements": [],
+  "version": "0.1.0"
+}
